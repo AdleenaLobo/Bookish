@@ -50,7 +50,7 @@ def register_users_routes(app, db):
                 setattr(user, field, data[field])
 
         db.session.commit()
-        return jsonify(user.to_dict())
+        return jsonify(user.to_dict()), 200
 
     # DELETE /api/users/<user_id> — delete a user
     @app.route('/api/users/<user_id>', methods=['DELETE'])
