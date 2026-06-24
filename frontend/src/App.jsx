@@ -1,19 +1,19 @@
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import BookStore from "./pages/BookStore";
+import Book from "./pages/Book";
+// import Catalog from "./pages/Catalog";
 
-import { useState , useEffect} from "react"
-function App(){
-  const [message , setMessage] = useState("")
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      {/* <Route path="/catalog" element={<Catalog />} /> */}
 
-  useEffect(()=>{
-    fetch("/api/hello")
-    .then(res => res.json())
-    .then(data => setMessage(data.message))
-  },[])
-  return(
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-3xl font-bold mb-4">Bookish</h1>
-      <p className="text-gray-500 mb-4">{message}</p>
-      <button>Get Started</button>
-    </div>)
+      <Route path="/bookstore" element={<BookStore />} />
+      <Route path="/book" element={<Book/>}/>
+    </Routes>
+  );
 }
 
-export default App
+export default App;

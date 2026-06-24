@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <filter id="magic-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <linearGradient id="gold-cover" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9A7B1C" />
+      <stop offset="50%" stop-color="#E6C65B" />
+      <stop offset="100%" stop-color="#735606" />
+    </linearGradient>
+
+    <linearGradient id="gold-page-edge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFDF3" />
+      <stop offset="45%" stop-color="#F2D17E" />
+      <stop offset="50%" stop-color="#9A7B1C" />
+      <stop offset="55%" stop-color="#F2D17E" />
+      <stop offset="100%" stop-color="#FFFDF3" />
+    </linearGradient>
+
+    <linearGradient id="page-gradient-left" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#C2B080" stop-opacity="0.7"/>
+      <stop offset="10%" stop-color="#FFFDF0"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+
+    <linearGradient id="page-gradient-right" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C2B080" stop-opacity="0.7"/>
+      <stop offset="10%" stop-color="#FFFDF0"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+
+    <g id="sparkle">
+      <path d="M 0,-15 Q 0,0 15,0 Q 0,0 0,15 Q 0,0 -15,0 Q 0,0 0,-15 Z" fill="#FFEFA6" filter="url(#magic-glow)"/>
+    </g>
+    <g id="sparkle-small">
+      <path d="M 0,-7 Q 0,0 7,0 Q 0,0 0,7 Q 0,0 -7,0 Q 0,0 0,-7 Z" fill="#FFFFFF"/>
+    </g>
+  </defs>
+
+  <g opacity="0.8">
+    <path d="M 150,250 A 280,240 0 0,1 650,250" fill="none" stroke="#F2D17E" stroke-width="3" stroke-dasharray="6,6" filter="url(#magic-glow)" />
+    <path d="M 200,220 A 220,180 0 0,1 600,220" fill="none" stroke="#FFEFA6" stroke-width="1.5" opacity="0.6" />
+    
+    <use href="#sparkle" x="400" y="100" transform="scale(1.2)" />
+    <use href="#sparkle" x="280" y="160" transform="scale(0.8)" />
+    <use href="#sparkle" x="520" y="150" transform="scale(0.9)" />
+    <use href="#sparkle" x="340" y="220" transform="scale(0.5)" />
+    <use href="#sparkle" x="460" y="200" transform="scale(0.6)" />
+    
+    <use href="#sparkle-small" x="220" y="200" />
+    <use href="#sparkle-small" x="580" y="180" />
+    <use href="#sparkle-small" x="380" y="140" />
+    <use href="#sparkle-small" x="430" y="160" />
+  </g>
+
+  <g id="whole-book" transform="translate(0, 50)">
+    
+    <path d="M 360,430 Q 400,450 440,430 L 440,450 Q 400,470 360,450 Z" fill="url(#gold-cover)" filter="url(#magic-glow)"/>
+    <ellipse cx="400" cy="442" rx="42" ry="15" fill="url(#gold-cover)" stroke="#FFFDF3" stroke-width="1"/>
+
+    <path d="M 400,440 Q 250,420 110,400 L 95,250 Q 250,280 400,310 Z" fill="url(#gold-cover)" stroke="#543D02" stroke-width="2"/>
+    <path d="M 400,440 Q 550,420 690,400 L 705,250 Q 550,280 400,310 Z" fill="url(#gold-cover)" stroke="#543D02" stroke-width="2"/>
+
+    <path d="M 110,400 Q 250,420 400,310 Q 550,420 690,400 L 695,385 Q 550,405 400,295 Q 250,405 105,385 Z" fill="url(#gold-page-edge)" />
+
+    <path d="M 400,305 Q 250,415 105,385 L 115,240 Q 250,270 400,305 Z" fill="#FFFDF0" stroke="#E6C65B" stroke-width="1"/>
+    <path d="M 400,305 Q 550,415 695,385 L 685,240 Q 550,270 400,305 Z" fill="#FFFDF0" stroke="#E6C65B" stroke-width="1"/>
+
+    <path d="M 400,300 Q 240,360 130,290 L 150,150 Q 270,210 400,300 Z" fill="url(#page-gradient-left)" stroke="#D4B359" stroke-width="0.5" />
+    <path d="M 400,300 Q 560,360 670,290 L 650,150 Q 530,210 400,300 Z" fill="url(#page-gradient-right)" stroke="#D4B359" stroke-width="0.5" />
+
+    <path d="M 400,295 Q 230,300 160,190 L 195,70 Q 270,160 400,295 Z" fill="url(#page-gradient-left)" stroke="#E6C65B" stroke-width="0.75" />
+    <path d="M 400,295 Q 570,300 640,190 L 605,70 Q 530,160 400,295 Z" fill="url(#page-gradient-right)" stroke="#E6C65B" stroke-width="0.75" />
+
+    <path d="M 210,100 Q 230,130 210,160 M 205,115 Q 220,125 235,115" fill="none" stroke="#D4B359" stroke-width="1.5" opacity="0.7"/>
+    <path d="M 590,100 Q 570,130 590,160 M 595,115 Q 580,125 565,115" fill="none" stroke="#D4B359" stroke-width="1.5" opacity="0.7"/>
+
+    <path d="M 400,295 M 400,295 L 400,90" stroke="#FFFDF3" stroke-width="3" filter="url(#magic-glow)" opacity="0.8" />
+  </g>
+
+  <g transform="translate(0, 50)">
+    <circle cx="400" cy="260" r="15" fill="#FFFFFF" filter="url(#magic-glow)"/>
+    <use href="#sparkle" x="400" y="260" transform="scale(1.5)" />
+    <use href="#sparkle-small" x="370" y="280" />
+    <use href="#sparkle-small" x="430" y="240" />
+    <use href="#sparkle-small" x="390" y="210" />
+  </g>
+</svg>
