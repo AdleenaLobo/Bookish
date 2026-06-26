@@ -9,6 +9,21 @@ def register_author_routes(app, db):
         authors = Authors.query.all()
         return jsonify([a.to_dict() for a in authors])
     
+    @app.route('/api/authors/<author_id>', methods=['GET'])
+    def get_author(author_id):
+        author = Authors.query.get(author_id)
+
+        if not author:
+            return jsonify({
+                "message": "Author not found"
+            }), 404
+
+        return jsonify({
+            "id": author.id,
+            "name": author.name,
+            "description": author.self_description,
+            "image": author.image
+        }), 200
 
     @app.route('/api/authors', methods=['POST'])
     def create_authors():

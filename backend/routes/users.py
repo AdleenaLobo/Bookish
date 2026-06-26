@@ -1,8 +1,42 @@
 from flask import request, jsonify
 from models.user import Users
+from app import bcrypt
 
 
 def register_users_routes(app, db):
+    @app.route('/api/login', methods=['POST'])
+    def login():
+        data = request.get_json()
+
+        if not data:
+            return jsonify({
+            "message": "Request body must be JSON"
+            }), 400
+
+        email = data.get("email")
+        password = data.get("password")
+
+        if not email or not password:
+            return jsonify({
+            "message": "Email and password are required"
+            }), 400
+
+        user = Users.query.filter_by(email=email).first()
+
+        if user is None:
+            return jsonify({
+            "message": "Invalid email or password"
+            }), 401
+
+        if not bcrypt.check_password_hash(user.password, password):
+            return jsonify({
+            "message": "Invalid email or password"
+            }), 401
+
+        return jsonify({
+            "message": "Login successful",
+            "user": user.to_dict()
+        }), 200
 
     # GET /api/users — list all users
     @app.route('/api/users', methods=['GET'])
@@ -23,11 +57,9 @@ def register_users_routes(app, db):
 
         user = Users(
             name=data.get('name'),
-            age=data.get('age'),
             email=data.get('email'),
             phone_no=data.get('phone_no'),
-            password=data.get('password'),
-            address=data.get('address'),
+            password=bcrypt.generate_password_hash(data.get('password')).decode("utf-8")
         )
         db.session.add(user)
         db.session.commit()
@@ -45,7 +77,7 @@ def register_users_routes(app, db):
             return jsonify({'error': 'User not found'}), 404
 
         # Update only fields that are provided in the request
-        for field in ['name', 'age', 'email', 'phone_no', 'address']:
+        for field in ['name', 'email', 'phone_no']:
             if field in data:
                 setattr(user, field, data[field])
 

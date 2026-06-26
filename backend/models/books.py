@@ -15,6 +15,8 @@ class Books(db.Model):
     author_book_description = db.Column(db.String(300), nullable=True)
     status = db.Column(db.Boolean , nullable=False)
     price = db.Column(db.Integer, nullable=False)
+    image = db.Column(db.String(500), nullable=True)
+    stars = db.Column(db.Float, default=4.5)
 
 
     def to_dict(self):
@@ -27,4 +29,6 @@ class Books(db.Model):
             "author_book_description": self.author_book_description,
             "status": self.status,
             "price": self.price,
+            "image":self.image,
+            "stars":self.stars
         }

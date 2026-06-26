@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 def load_env(filepath='.env'):
     if os.path.exists(filepath):
@@ -16,6 +17,7 @@ load_env()
 
 app = Flask(__name__)
 CORS(app)
+bcrypt = Bcrypt(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
